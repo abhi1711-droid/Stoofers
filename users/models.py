@@ -20,12 +20,19 @@ class CustomUserModel(CreatedUpdatedActive):
 Get_User = get_user_model()
 
 prefix_list = [
-    '94518010', '94518011', '94158010', '94158011', '94157010', '94157011', '94517010', '94517011'
+    "94518010",
+    "94518011",
+    "94158010",
+    "94158011",
+    "94157010",
+    "94157011",
+    "94517010",
+    "94517011",
 ]
 
 
 def generate_card():
-    new_link = ''.join(random.choices(string.digits, k=8))
+    new_link = "".join(random.choices(string.digits, k=8))
     return random.choice(prefix_list) + new_link
 
 

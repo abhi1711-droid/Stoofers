@@ -23,7 +23,9 @@ class Offer(CreatedUpdatedActive):
     description = models.TextField(max_length=1000)
     terms = models.TextField(max_length=5000)
     value = models.FloatField()
-    value_type = models.CharField(max_length=50, choices=VALUE_CHOICES, default="FLAT OFF")
+    value_type = models.CharField(
+        max_length=50, choices=VALUE_CHOICES, default="FLAT OFF"
+    )
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
 

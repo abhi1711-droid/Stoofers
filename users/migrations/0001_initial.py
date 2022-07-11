@@ -12,39 +12,79 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('static_data', '0001_initial'),
+        ("static_data", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='StoofersCard',
+            name="StoofersCard",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('active', models.BooleanField(default=True)),
-                ('name', models.CharField(max_length=255)),
-                ('card_number', models.CharField(default=users.models.generate_card, max_length=16, unique=True)),
-                ('user', models.ForeignKey(default=-1, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("active", models.BooleanField(default=True)),
+                ("name", models.CharField(max_length=255)),
+                (
+                    "card_number",
+                    models.CharField(
+                        default=users.models.generate_card, max_length=16, unique=True
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        default=-1,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='CustomUserModel',
+            name="CustomUserModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('active', models.BooleanField(default=True)),
-                ('phone', models.CharField(max_length=10, null=True, unique=True)),
-                ('pincode', models.CharField(max_length=6)),
-                ('college_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='static_data.college')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("active", models.BooleanField(default=True)),
+                ("phone", models.CharField(max_length=10, null=True, unique=True)),
+                ("pincode", models.CharField(max_length=6)),
+                (
+                    "college_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="static_data.college",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]
