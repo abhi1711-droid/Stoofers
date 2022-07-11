@@ -9,13 +9,13 @@ class Country(CreatedUpdatedActive):
 
 class State(CreatedUpdatedActive):
     name = models.CharField(max_length=255)
-    display_name = models.CharField(max_length=255)
+    display_name = models.CharField(max_length=255, blank=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
 
 class City(CreatedUpdatedActive):
     name = models.CharField(max_length=255)
-    display_name = models.CharField(max_length=255)
+    display_name = models.CharField(max_length=255, blank=True)
     state = models.ForeignKey(State, on_delete=models.CASCADE)
 
 
