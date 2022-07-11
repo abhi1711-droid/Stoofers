@@ -13,7 +13,7 @@ User = get_user_model()
 class CustomUserModel(CreatedUpdatedActive):
     phone = models.CharField(null=True, unique=True, max_length=10)
     pincode = models.CharField(max_length=6)
-    college_id = models.ForeignKey(College, on_delete=models.CASCADE)
+    college = models.ForeignKey(College, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 

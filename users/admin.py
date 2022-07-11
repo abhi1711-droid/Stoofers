@@ -5,8 +5,8 @@ from users.models import CustomUserModel, StoofersCard
 
 
 class UserDetailsAdmin(admin.ModelAdmin):
-    list_display = ["id", "phone", "pincode", "college_id"]
-    list_filter = ["id", "phone", "pincode", "college_id"]
+    list_display = ["id", "phone", "pincode", "college"]
+    list_filter = ["id", "phone", "pincode", "college"]
 
 
 admin.site.register(CustomUserModel, UserDetailsAdmin)
