@@ -1,35 +1,39 @@
 from django.db import models
 
-from core.models import CreatedUpdatedActive
 
-
-class Country(CreatedUpdatedActive):
+class Country(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
 
-class State(CreatedUpdatedActive):
+
+class State(models.Model):
     name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255, blank=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 
-class City(CreatedUpdatedActive):
+
+class City(models.Model):
     name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255, blank=True)
     state = models.ForeignKey(State, on_delete=models.CASCADE)
 
 
-class Pincode(CreatedUpdatedActive):
+class Pincode(models.Model):
     pincode = models.CharField(max_length=6)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 
 
-class University(CreatedUpdatedActive):
+class University(models.Model):
     name = models.CharField(max_length=255)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 
 
-class College(CreatedUpdatedActive):
+class College(models.Model):
     name = models.CharField(max_length=255)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     university = models.ForeignKey(University, on_delete=models.CASCADE)

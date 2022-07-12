@@ -1,5 +1,11 @@
 from django.contrib import admin
 from static_data.models import City, Country, State, College, University, Pincode
+from django_admin_listfilter_dropdown.filters import (
+    DropdownFilter,
+    ChoiceDropdownFilter,
+    RelatedDropdownFilter,
+)
+from import_export import resources
 
 
 class CityAdmin(admin.ModelAdmin):
@@ -12,7 +18,7 @@ admin.site.register(City, CityAdmin)
 
 class CountryAdmin(admin.ModelAdmin):
     list_display = ["id", "name"]
-    list_filter = ["id", "name"]
+    list_filter = [("name", DropdownFilter)]
 
 
 admin.site.register(Country, CountryAdmin)
@@ -20,7 +26,9 @@ admin.site.register(Country, CountryAdmin)
 
 class StateAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "display_name", "country"]
-    list_filter = ["id", "name", "display_name", "country"]
+    list_filter = [
+        ("name", DropdownFilter),
+    ]
 
 
 admin.site.register(State, StateAdmin)
@@ -48,3 +56,10 @@ class PincodeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Pincode, PincodeAdmin)
+
+#
+# class CountryResource(resources.ModelResource):
+#     class Meta:
+#         model = Country
+#         fields = ('id', 'name')
+#         export_oder = ('id', 'name')
