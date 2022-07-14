@@ -6,6 +6,6 @@ def run():
     with open("scripts/countries.csv") as file:
         reader = csv.reader(file)
         next(reader)
+        Country.objects.all().delete()
         for row in reader:
-            a, b = Country.objects.get_or_create(name=row[1])
-            print(a, b)
+            Country.objects.get_or_create(name=row[1])
