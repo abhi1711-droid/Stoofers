@@ -5,7 +5,7 @@ from static_data.models import Pincode, City, State, Country
 
 
 def run():
-    with open("scripts/Pincode.csv") as file:
+    with open("scripts/Pincode.csv", encoding="utf8") as file:
         reader = csv.reader(file)
         next(reader)
         Pincode.objects.all().delete()

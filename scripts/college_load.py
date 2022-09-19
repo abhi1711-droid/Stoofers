@@ -3,7 +3,7 @@ from static_data.models import College, University, City, State, Country
 
 
 def run():
-    with open("scripts/Colleges.csv") as file:
+    with open("scripts/Colleges.csv", encoding="utf8") as file:
         reader = csv.reader(file)
         next(reader)
         College.objects.all().delete()
