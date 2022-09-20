@@ -126,6 +126,7 @@ select{
         <div class="form-group">
             <div class="input-group">
 
+                {% csrf_token %}
                 {% for field in form %}
                 <p>
                     {{ field.label_tag }}<br>

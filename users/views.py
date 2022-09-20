@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from users.forms import SignupForm, CustomUserform, Cardform
@@ -10,6 +11,7 @@ from django.contrib.auth import get_user_model
 current_user = get_user_model()
 
 
+@csrf_exempt
 def login(request):
     return render(request, "registration/login.html")
 
@@ -19,6 +21,7 @@ def logout_user(request):
     return redirect("login")
 
 
+@csrf_exempt
 def signup(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
