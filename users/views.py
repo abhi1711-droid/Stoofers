@@ -62,3 +62,7 @@ def customer(request):
         return redirect("stooferscard")
     context["form"] = form
     return render(request, "customuser.html", context)
+
+
+def error_404_view(request, exception):
+    return redirect("https://stoofers.com")
